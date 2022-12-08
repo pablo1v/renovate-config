@@ -10,7 +10,7 @@
   "dependencyDashboard": true,
   "separateMajorMinor": true,
   "separateMultipleMajor": true,
-  "prCreation": "immediate",
+  "prCreation": "not-pending",
   "semanticCommits": "enabled",
   "semanticCommitType": "chore",
   "semanticCommitScope": "deps",
@@ -22,10 +22,16 @@
   "lockFileMaintenance": {
     "enabled": true,
     "automerge": true,
+    "prPriority": 2,
+    "prCreation": "immediate",
     "extends": ["schedule:monthly"]
   },
   "pin": {
     "commitBody": "[skip ci]"
+  },
+  "patch": {
+    "prPriority": 2,
+    "prCreation": "immediate"
   },
   "major": {
     "dependencyDashboardApproval": true
