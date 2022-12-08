@@ -1,0 +1,60 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "ignoreTests": false,
+  "separateMajorMinor": true,
+  "separateMultipleMajor": true,
+  "prCreation": "immediate",
+  "semanticCommits": "enabled",
+  "semanticCommitType": "chore",
+  "semanticCommitScope": "deps",
+  "labels": ["renovate", "dependencies"],
+  "pin": {
+    "commitBody": "[skip ci]"
+  },
+  "major": {
+    "dependencyDashboard": true,
+    "dependencyDashboardApproval": true
+  },
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "labels": ["security"]
+  },
+  "lockFileMaintenance": {
+    "enabled": true,
+    "automerge": true,
+    "extends": ["schedule:monthly"]
+  },
+  "packageRules": [
+    {
+      "matchPackagePatterns": ["*"],
+      "rangeStrategy": "replace"
+    },
+
+    {
+      "matchUpdateTypes": ["pin", "pinDigest", "digest", "patch"],
+      "automerge": true
+    },
+    {
+      "matchUpdateTypes": ["minor"],
+      "matchDepTypes": ["devDependencies"],
+      "automerge": true
+    },
+
+    {
+      "matchDepTypes": ["peerDependencies", "engines"],
+      "enabled": false
+    },
+    {
+      "matchPackageNames": ["@types/node"],
+      "major": {
+        "enabled": false
+      }
+    },
+
+    {
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "all non-major dependencies",
+      "groupSlug": "all-minor-patch"
+    }
+  ]
+}
