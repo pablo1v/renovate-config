@@ -1,20 +1,20 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    ":ignoreModulesAndTests",
+    "schedule:earlyMondays",
+    "workarounds:all",
+    "group:all"
+  ],
   "ignoreTests": false,
+  "dependencyDashboard": true,
   "separateMajorMinor": true,
   "separateMultipleMajor": true,
   "prCreation": "immediate",
   "semanticCommits": "enabled",
   "semanticCommitType": "chore",
   "semanticCommitScope": "deps",
-  "labels": ["renovate", "dependencies"],
-  "pin": {
-    "commitBody": "[skip ci]"
-  },
-  "major": {
-    "dependencyDashboard": true,
-    "dependencyDashboardApproval": true
-  },
+  "labels": ["dependencies"],
   "vulnerabilityAlerts": {
     "enabled": true,
     "labels": ["security"]
@@ -24,10 +24,20 @@
     "automerge": true,
     "extends": ["schedule:monthly"]
   },
+  "pin": {
+    "commitBody": "[skip ci]"
+  },
+  "major": {
+    "dependencyDashboardApproval": true
+  },
   "packageRules": [
     {
       "matchPackagePatterns": ["*"],
-      "rangeStrategy": "replace"
+      "rangeStrategy": "pin"
+    },
+    {
+      "matchDepTypes": ["engines", "peerDependencies"],
+      "rangeStrategy": "auto"
     },
 
     {
@@ -36,7 +46,7 @@
     },
 
     {
-      "matchDepTypes": ["peerDependencies", "engines"],
+      "matchDepTypes": ["engines", "peerDependencies"],
       "enabled": false
     },
     {
@@ -44,17 +54,6 @@
       "major": {
         "enabled": false
       }
-    },
-
-    {
-      "matchUpdateTypes": ["patch"],
-      "groupName": "all patch dependencies",
-      "groupSlug": "all-patch"
-    },
-    {
-      "matchUpdateTypes": ["minor"],
-      "groupName": "all minor dependencies",
-      "groupSlug": "all-minor"
     }
   ]
 }
