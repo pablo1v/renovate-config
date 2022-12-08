@@ -31,12 +31,7 @@
     },
 
     {
-      "matchUpdateTypes": ["pin", "pinDigest", "digest", "patch"],
-      "automerge": true
-    },
-    {
-      "matchUpdateTypes": ["minor"],
-      "matchDepTypes": ["devDependencies"],
+      "matchUpdateTypes": ["pin", "pinDigest", "digest", "patch", "minor"],
       "automerge": true
     },
 
