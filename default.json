@@ -23,7 +23,7 @@
   "labels": ["dependencies"],
   "vulnerabilityAlerts": {
     "enabled": true,
-    "labels": ["security"]
+    "labels": ["dependencies", "security"]
   },
   "lockFileMaintenance": {
     "extends": ["schedule:monthly"],
