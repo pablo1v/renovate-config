@@ -1,0 +1,13 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [":semanticPrefixFixDepsChoreOthers"],
+  "semanticCommits": "enabled",
+  "pin": {
+    "packageRules": [
+      {
+        "matchDepTypes": ["devDependencies"],
+        "commitBody": "[skip ci]"
+      }
+    ]
+  }
+}

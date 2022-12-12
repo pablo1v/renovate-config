@@ -1,9 +1,18 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
+    "local>pablo1v/renovate-config:semanticCommit",
+
     ":ignoreModulesAndTests",
+    ":noUnscheduledUpdates",
+
     "schedule:earlyMondays",
+
+    "replacements:all",
     "workarounds:all",
+    "npm:unpublishSafe",
+    "helpers:disableTypesNodeMajor",
+
     "group:all"
   ],
   "ignoreTests": false,
@@ -11,23 +20,20 @@
   "separateMajorMinor": true,
   "separateMultipleMajor": true,
   "prCreation": "not-pending",
-  "semanticCommits": "enabled",
-  "semanticCommitType": "chore",
-  "semanticCommitScope": "deps",
   "labels": ["dependencies"],
   "vulnerabilityAlerts": {
     "enabled": true,
     "labels": ["security"]
   },
   "lockFileMaintenance": {
+    "extends": ["schedule:monthly"],
     "enabled": true,
     "automerge": true,
-    "prPriority": 2,
-    "prCreation": "immediate",
-    "extends": ["schedule:monthly"]
+    "prPriority": 2
   },
   "pin": {
-    "commitBody": "[skip ci]"
+    "prCreation": "immediate",
+    "schedule": ["at any time"]
   },
   "patch": {
     "prPriority": 2,
@@ -54,12 +60,6 @@
     {
       "matchDepTypes": ["engines", "peerDependencies"],
       "enabled": false
-    },
-    {
-      "matchPackageNames": ["@types/node"],
-      "major": {
-        "enabled": false
-      }
     }
   ]
 }
