@@ -13,7 +13,7 @@
     "npm:unpublishSafe",
     "helpers:disableTypesNodeMajor",
 
-    "group:all"
+    "group:monorepos"
   ],
   "ignoreTests": false,
   "dependencyDashboard": true,
