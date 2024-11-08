@@ -11,7 +11,10 @@
     "workarounds:all",
 
     "npm:unpublishSafe",
-    "helpers:disableTypesNodeMajor"
+    "helpers:disableTypesNodeMajor",
+
+    "schedule:weekends",
+    "schedule:automergeWeekends"
   ],
   "updateNotScheduled": true,
   "dependencyDashboard": true,
