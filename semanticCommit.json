@@ -2,11 +2,6 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [":semanticPrefixFixDepsChoreOthers"],
   "pin": {
-    "packageRules": [
-      {
-        "matchUpdateTypes": ["pin"],
-        "commitBody": "[skip ci]"
-      }
-    ]
+    "commitBody": "[skip ci]"
   }
 }
