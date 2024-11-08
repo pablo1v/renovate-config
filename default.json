@@ -1,22 +1,19 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "local>pablo1v/renovate-config:semanticCommit",
-
     ":ignoreModulesAndTests",
-    ":noUnscheduledUpdates",
 
-    "schedule:earlyMondays",
+    "group:monorepos",
 
     "replacements:all",
     "workarounds:all",
-    "npm:unpublishSafe",
-    "helpers:disableTypesNodeMajor",
 
-    "group:monorepos"
+    "npm:unpublishSafe",
+    "helpers:disableTypesNodeMajor"
   ],
-  "ignoreTests": false,
+  "updateNotScheduled": true,
   "dependencyDashboard": true,
+  "separateMinorPatch": true,
   "separateMajorMinor": true,
   "separateMultipleMajor": true,
   "prCreation": "not-pending",
@@ -28,38 +25,26 @@
   "lockFileMaintenance": {
     "extends": ["schedule:monthly"],
     "enabled": true,
-    "automerge": true,
-    "prPriority": 2
-  },
-  "pin": {
-    "prCreation": "immediate",
-    "schedule": ["at any time"]
-  },
-  "patch": {
-    "prPriority": 2,
-    "prCreation": "immediate"
-  },
-  "major": {
-    "dependencyDashboardApproval": true
+    "automerge": true
   },
   "packageRules": [
     {
-      "matchPackagePatterns": ["*"],
+      "matchPackageNames": ["*"],
       "rangeStrategy": "pin"
     },
     {
       "matchDepTypes": ["engines", "peerDependencies"],
+      "enabled": false,
       "rangeStrategy": "auto"
     },
-
     {
-      "matchUpdateTypes": ["pin", "pinDigest", "digest", "patch", "minor"],
-      "automerge": true
+      "matchUpdateTypes": ["minor", "major"],
+      "dependencyDashboardApproval": true
     },
-
     {
-      "matchDepTypes": ["engines", "peerDependencies"],
-      "enabled": false
+      "matchUpdateTypes": ["pin", "pinDigest", "digest", "patch"],
+      "automerge": true,
+      "prPriority": 1
     }
   ]
 }
